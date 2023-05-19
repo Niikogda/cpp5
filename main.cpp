@@ -1,11 +1,13 @@
-#include <iostream>
+#include <iostream>#include <iostream>
 #include <limits>
 #include <windows.h>
 using namespace std;
 
 int main() {
+
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
+
     const int NUM_MONTHS = 12;
     double profits[NUM_MONTHS];
 
@@ -15,26 +17,26 @@ int main() {
         cin >> profits[i];
     }
 
-    double maxProfit = numeric_limits<double>::min();
+    double maxProfit = profits[0];
     int maxMonth = 0;
-    for (int i = 0; i < NUM_MONTHS; i++) {
+    for (int i = 1; i < NUM_MONTHS; i++) {
         if (profits[i] > maxProfit) {
             maxProfit = profits[i];
-            maxMonth = i + 1;
+            maxMonth = i;
         }
     }
 
-    double minProfit = numeric_limits<double>::max();
+    double minProfit = profits[0];
     int minMonth = 0;
-    for (int i = 0; i < NUM_MONTHS; i++) {
+    for (int i = 1; i < NUM_MONTHS; i++) {
         if (profits[i] < minProfit) {
             minProfit = profits[i];
-            minMonth = i + 1;
+            minMonth = i;
         }
     }
 
-    cout << "Місяць з максимальним прибутком: " << maxMonth << endl;
-    cout << "Місяць з мінімальним прибутком: " << minMonth << endl;
+    cout << "Місяць з максимальним прибутком: " << maxMonth + 1 << endl;
+    cout << "Місяць з мінімальним прибутком: " << minMonth + 1 << endl;
 
     return 0;
 }
